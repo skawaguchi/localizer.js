@@ -1,0 +1,36 @@
+{
+  "name": "i18n-mock.js",
+  "version": "0.0.1",
+  "description": "A node module that generates fake localization files from a set of source language files in a directory. Intended to for use with Gulp and targeted for projects using angular-translate partials.",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Stephen Kawaguchi",
+      "email": "stephen.kawaguchi@gmail.com",
+      "url": "https://github.com/skawaguchi/"
+    }
+  ],
+  "scripts": {
+    "test": "mocha"
+  },
+  "keywords": [
+    "gulpfriendly",
+    "angular-translate"
+  ],
+  "dependencies": {
+    "gulp-util": "^3.0.2",
+    "js-beautify": "^1.5.4",
+    "through2": "^0.6.3"
+  },
+  "devDependencies": {
+    "gulp": "^3.8.10",
+    "mocha": "^1.18.2"
+  },
+  "engines": {
+    "node": ">=0.10.33"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/skawaguchi/i18n-mock.js.git"
+  }
+}
