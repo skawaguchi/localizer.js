@@ -10,7 +10,7 @@
  *
  * @example
  *  return gulp.src ( './app/content/en.json')
- *  .pipe ( localizer([
+ *  .pipe ( i18nMock([
  *    { fileName: 'fr', prepend: 'FR:' },
  *    { fileName: 'es', prepend: 'ES:' }
  *  ]))
@@ -40,21 +40,20 @@ module.exports = function ( fileConfigs, opts ) {
   opts = opts || {};
 
   if ( ! fileConfigs ) {
-    gutil.log ( 'Localizer generated fake Samaritan Aramaic files for you' );
+    gutil.log ( 'i18nMock generated fake Samaritan Aramaic files for you' );
     fileConfigs = [{ fileName: 'sam', prepend: 'SAM:'}];
   }
 
   // Use through to pass the stream through
   return through2.obj ( function ( file, enc, cb ) {
 
-
     if ( file.isStream () ) {
-      cb ( new gutil.PluginError( 'localizer.js', { message: 'Streaming not supported' } ));
+      cb ( new gutil.PluginError( 'i18nMock.js', { message: 'Streaming not supported' } ));
       return;
     }
 
     if ( fileConfigs && ! Array.isArray( fileConfigs ) ) {
-      cb ( new gutil.PluginError( 'localizer.js', { message: 'You must pass an array with objects with fileName and prepend attributes to localizer' } ));
+      cb ( new gutil.PluginError( 'i18nMock.js', { message: 'You must pass an array with objects with fileName and prepend attributes to i18nMock' } ));
       return;
     }
 
@@ -101,7 +100,7 @@ console.log(newFile.path);
 
     } catch ( err ) {
 
-      new gutil.PluginError ( 'localizer', { error: err });
+      new gutil.PluginError ( 'i18nMock.js', { error: err });
 
     }
 
