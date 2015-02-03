@@ -24,7 +24,7 @@
  *
  * @param {object} opts This is a value object that can be used to
  * configure the behaviour of the plugin. This currently only supports
- * the noLogging boolean flag if you want to turn off logging.
+ * a noLogging boolean flag if you want to turn off logging.
  *
  */
 
@@ -40,7 +40,9 @@ module.exports = function ( fileConfigs, opts ) {
   opts = opts || {};
 
   if ( ! fileConfigs ) {
-    gutil.log ( 'i18nMock generated fake Samaritan Aramaic files for you' );
+    if ( ! opts.noLogging ) {
+      gutil.log('i18nMock generated fake Samaritan Aramaic files for you');
+    }
     fileConfigs = [{ fileName: 'sam', prepend: 'SAM:'}];
   }
 
@@ -93,17 +95,15 @@ module.exports = function ( fileConfigs, opts ) {
           gutil.log ( gutil.colors.black.bgGreen ( 'Generated' ), newFile.path.split('/').pop() );
 
         }
-console.log(newFile.path);
+
         this.push( newFile );
 
       }, this);
 
     } catch ( err ) {
-
-      new gutil.PluginError ( 'i18nMock.js', { error: err });
-
+      new gutil.PluginError ( 'i18nMock.js', 'You must pass valid JSON files.' );
     }
 
-    cb(null, file);
+    cb ( null, file );
   });
 };
